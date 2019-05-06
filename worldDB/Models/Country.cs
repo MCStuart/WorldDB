@@ -25,6 +25,11 @@ namespace WorldDB.Models
      Capital = capital;
    }
 
+   public Country(string name)
+   {
+     Name = name;
+   }
+
    public static List<Country> GetCountries()
    {
      List<Country> allCountries = new List<Country> {};
@@ -36,11 +41,11 @@ namespace WorldDB.Models
 
      while(rdr.Read())
      {
-       string countryName = rdr.GetString(1);
-       string countryContinent = rdr.GetString(2);
-       int countryPopulation = rdr.GetInt32(6);
-       int countryCapital = rdr.GetInt32(13);
-       Country newCountry = new Country(countryName, countryContinent, countryPopulation, countryCapital);
+       string countryName = rdr.GetString(0);
+       // string countryContinent = rdr.GetString(2);
+       // int countryPopulation = rdr.GetInt32(6);
+       // int countryCapital = rdr.GetInt32(13);
+       Country newCountry = new Country(countryName);
        allCountries.Add(newCountry);
 
      }
